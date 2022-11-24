@@ -4,16 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue.js ontro</title>
+    <title>Vue.js intro</title>
 </head>
 
 <body>
 
-    <div id="app"></div>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <button @click="onChange">Change message</button>
+        <hr>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <h2>Batman quotes</h2>
+        <br>
+        <input type="text" v-model="newQuote" @keypress.enter="addQuote" />
+        <div class="border" v-for="({quote, author}, index) of quotes">
+            <h3>{{index+1}}) {{quote}}</h3>
+            <blockquote v-if="author">{{author}}</blockquote>
+            <blockquote v-else>No author</blockquote>
+        </div>
+
+    </div>
+
     <script src="app.js"></script>
+
+    <style>
+        .border {
+            border-style: double;
+            border-width: 3px;
+            border-color: cornflowerblue;
+        }
+    </style>
 
 </body>
 
